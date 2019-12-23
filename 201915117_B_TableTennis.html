@@ -66,6 +66,31 @@
 
           LeftScore = RightScore = 0;
         }
+        divLeftTop = 400;
+        divRightTop = 400;
+        ballTop = 470;
+        ballAngle = 1;
+        if(ballposition == -1)
+          ballLeft = 350;
+        else
+          ballLeft = 1450;
+
+        ScoreUpdate(LeftScore, RightScore);
+        ballUpdate(ballLeft, ballTop);
+        moveToLeft(divLeftTop);
+        moveToRight(divRightTop);
+      }
+
+     function ScoreUpdate(LeftScore, RightScore)
+      {
+        document.querySelector("h2").innerHTML = `${LeftScore} : ${RightScore}`;
+      }
+
+      function ballUpdate(ballLeft, ballTop)
+      {
+        document.getElementById("ball").style.left = ballLeft + 'px';
+        document.getElementById("ball").style.top = ballTop + 'px';
+      }
 
     </script>
   </head>
