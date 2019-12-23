@@ -3,25 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <!------------------------------------------------------------------------->
     <style media="screen">
-       #LeftUser
-       { 
-         background: red;
-         width: 50px;
-         height: 200px;
-         left: 300px;  /* x축 좌표값 */
-         top: 400px; /* y축 좌표값 */
-         position: absolute;
-       }
-       #RightUser
-       {
-         background: blue;
-         width: 50px;
-         height: 200px;
-         left: 1500px;  /* x축 좌표값 */
-         top: 400px; /* y축 좌표값 */	
-         position: absolute;
-       }
+      #LeftUser
+      {
+        background: red;
+        width: 50px;
+        height: 200px;
+        left: 300px;  /* x축 좌표값 */
+        top: 400px; /* y축 좌표값 */
+        position: absolute;
+      }
+      #RightUser
+      {
+        background: blue;
+        width: 50px;
+        height: 200px;
+        left: 1500px;  /* x축 좌표값 */
+        top: 400px; /* y축 좌표값 */
+        position: absolute;
+      }
 
       #ball
       {
@@ -66,6 +67,7 @@
 
           LeftScore = RightScore = 0;
         }
+
         divLeftTop = 400;
         divRightTop = 400;
         ballTop = 470;
@@ -81,11 +83,12 @@
         moveToRight(divRightTop);
       }
 
-     function ScoreUpdate(LeftScore, RightScore)
+      function ScoreUpdate(LeftScore, RightScore)
       {
         document.querySelector("h2").innerHTML = `${LeftScore} : ${RightScore}`;
       }
 
+      // ************* ball(공)의 움직임 (start) *****************************
       function ballUpdate(ballLeft, ballTop)
       {
         document.getElementById("ball").style.left = ballLeft + 'px';
@@ -149,6 +152,10 @@
         return 0;
       }
 
+      // ************* ball(공)의 움직임 (end) *****************************
+
+
+      // ****************** User들 움직임 (start) ******************************
       function moveToLeft(top)
       {
         let LDiv = document.getElementById("LeftUser");
@@ -188,7 +195,14 @@
           moveToLeft(divLeftTop);
         }
       }
+      // ****************** User들 움직임 (end) ********************************
 
+      window.onload = function()
+      {
+        setInterval(ballMove, 50);
+        ScoreUpdate(LeftScore, RightScore);
+        document.addEventListener('keydown', keyDownHandler);
+      }
     </script>
   </head>
   <body>
